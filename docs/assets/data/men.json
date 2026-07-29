@@ -3,10 +3,10 @@
     "id": 1,
     "name": "Jannik Sinner",
     "nationality": "🇮🇹",
-    "height": "188 cm",
+    "height": "191 cm",
     "ranking": 1,
-    "points": 11330,
-    "grandSlams": ["2024 AO", "2024 USO"],
+    "points": 13450,
+    "grandSlams": ["2024 AO", "2024 USO", "2025 AO", "2025 Wimbledon", "2026 Wimbledon"],
     "photo": "assets/images/sinner.jpg"
   },
   {
@@ -15,7 +15,7 @@
     "nationality": "🇩🇪",
     "height": "198 cm",
     "ranking": 2,
-    "points": 8135,
+    "points": 8480,
     "grandSlams": ["—"],
     "photo": "assets/images/zverev.jpg"
   },
@@ -25,39 +25,39 @@
     "nationality": "🇪🇸",
     "height": "183 cm",
     "ranking": 3,
-    "points": 7910,
-    "grandSlams": ["2022 USO", "2023 WB", "2024 FO"],
+    "points": 8160,
+    "grandSlams": ["2022 USO", "2023 Wimbledon", "2024 Roland Garros", "2024 Wimbledon", "2025 Roland Garros"],
     "photo": "assets/images/alcaraz.jpg"
   },
   {
     "id": 4,
-    "name": "Taylor Fritz",
-    "nationality": "🇺🇸",
-    "height": "196 cm",
+    "name": "Felix Auger-Aliassime",
+    "nationality": "🇨🇦",
+    "height": "193 cm",
     "ranking": 4,
-    "points": 5350,
+    "points": 4740,
     "grandSlams": ["—"],
-    "photo": "assets/images/fritz.jpg"
+    "photo": "assets/images/auger-aliassime.jpg"
   },
   {
     "id": 5,
-    "name": "Daniil Medvedev",
-    "nationality": "🇷🇺",
-    "height": "198 cm",
+    "name": "Alex de Minaur",
+    "nationality": "🇦🇺",
+    "height": "183 cm",
     "ranking": 5,
-    "points": 5035,
-    "grandSlams": ["2021 USO"],
-    "photo": "assets/images/medvedev.jpg"
+    "points": 4110,
+    "grandSlams": ["—"],
+    "photo": "assets/images/de-minaur.jpg"
   },
   {
     "id": 6,
-    "name": "Casper Ruud",
-    "nationality": "🇳🇴",
-    "height": "183 cm",
+    "name": "Ben Shelton",
+    "nationality": "🇺🇸",
+    "height": "193 cm",
     "ranking": 6,
-    "points": 4565,
+    "points": 3770,
     "grandSlams": ["—"],
-    "photo": "assets/images/ruud.jpg"
+    "photo": "assets/images/shelton.jpg"
   },
   {
     "id": 7,
@@ -65,138 +65,145 @@
     "nationality": "🇷🇸",
     "height": "188 cm",
     "ranking": 7,
-    "points": 4510,
-    "grandSlams": ["24× GS"],
+    "points": 3760,
+    "grandSlams": [
+      "2008 AO", "2011 AO", "2011 Wimbledon", "2011 USO",
+      "2012 AO", "2013 AO", "2014 Wimbledon", "2015 AO",
+      "2015 Wimbledon", "2015 USO", "2016 AO", "2016 Roland Garros",
+      "2018 Wimbledon", "2018 USO", "2019 AO", "2019 Wimbledon",
+      "2020 AO", "2021 AO", "2021 Roland Garros", "2021 Wimbledon",
+      "2023 AO", "2023 Roland Garros", "2023 USO", "2024 AO"
+    ],
     "photo": "assets/images/djokovic.jpg"
   },
   {
     "id": 8,
+    "name": "Daniil Medvedev",
+    "nationality": "🇷🇺",
+    "height": "198 cm",
+    "ranking": 8,
+    "points": 3670,
+    "grandSlams": ["2021 USO"],
+    "photo": "assets/images/medvedev.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Flavio Cobolli",
+    "nationality": "🇮🇹",
+    "height": "183 cm",
+    "ranking": 9,
+    "points": 3460,
+    "grandSlams": ["—"],
+    "photo": "assets/images/cobolli.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Taylor Fritz",
+    "nationality": "🇺🇸",
+    "height": "196 cm",
+    "ranking": 10,
+    "points": 3365,
+    "grandSlams": ["—"],
+    "photo": "assets/images/fritz.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Alexander Bublik",
+    "nationality": "🇰🇿",
+    "height": "196 cm",
+    "ranking": 11,
+    "points": 2610,
+    "grandSlams": ["—"],
+    "photo": "assets/images/bublik.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Jiri Lehecka",
+    "nationality": "🇨🇿",
+    "height": "185 cm",
+    "ranking": 12,
+    "points": 2510,
+    "grandSlams": ["—"],
+    "photo": "assets/images/lehecka.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Casper Ruud",
+    "nationality": "🇳🇴",
+    "height": "183 cm",
+    "ranking": 13,
+    "points": 2435,
+    "grandSlams": ["—"],
+    "photo": "assets/images/ruud.jpg"
+  },
+  {
+    "id": 14,
     "name": "Andrey Rublev",
     "nationality": "🇷🇺",
     "height": "188 cm",
-    "ranking": 8,
-    "points": 4420,
+    "ranking": 14,
+    "points": 2380,
     "grandSlams": ["—"],
     "photo": "assets/images/rublev.jpg"
   },
   {
-    "id": 9,
-    "name": "Alex de Minaur",
-    "nationality": "🇦🇺",
-    "height": "183 cm",
-    "ranking": 9,
-    "points": 4195,
-    "grandSlams": ["—"],
-    "photo": "assets/images/deminaur.jpg"
-  },
-  {
-    "id": 10,
-    "name": "Tommy Paul",
-    "nationality": "🇺🇸",
-    "height": "185 cm",
-    "ranking": 10,
-    "points": 3860,
-    "grandSlams": ["—"],
-    "photo": "assets/images/paul.jpg"
-  },
-  {
-    "id": 11,
-    "name": "Stefanos Tsitsipas",
-    "nationality": "🇬🇷",
-    "height": "193 cm",
-    "ranking": 11,
-    "points": 3775,
-    "grandSlams": ["—"],
-    "photo": "assets/images/tsitsipas.jpg"
-  },
-  {
-    "id": 12,
+    "id": 15,
     "name": "Lorenzo Musetti",
     "nationality": "🇮🇹",
     "height": "185 cm",
-    "ranking": 12,
-    "points": 3650,
+    "ranking": 15,
+    "points": 2315,
     "grandSlams": ["—"],
     "photo": "assets/images/musetti.jpg"
   },
   {
-    "id": 13,
-    "name": "Holger Rune",
-    "nationality": "🇩🇰",
-    "height": "188 cm",
-    "ranking": 13,
-    "points": 3405,
-    "grandSlams": ["—"],
-    "photo": "assets/images/rune.jpg"
-  },
-  {
-    "id": 14,
-    "name": "Jack Draper",
-    "nationality": "🇬🇧",
-    "height": "193 cm",
-    "ranking": 14,
-    "points": 3365,
-    "grandSlams": ["—"],
-    "photo": "assets/images/draper.jpg"
-  },
-  {
-    "id": 15,
-    "name": "Grigor Dimitrov",
-    "nationality": "🇧🇬",
-    "height": "191 cm",
-    "ranking": 15,
-    "points": 3235,
-    "grandSlams": ["—"],
-    "photo": "assets/images/dimitrov.jpg"
-  },
-  {
     "id": 16,
-    "name": "Frances Tiafoe",
-    "nationality": "🇺🇸",
-    "height": "188 cm",
-    "ranking": 16,
-    "points": 3045,
-    "grandSlams": ["—"],
-    "photo": "assets/images/tiafoe.jpg"
-  },
-  {
-    "id": 17,
-    "name": "Hubert Hurkacz",
-    "nationality": "🇵🇱",
-    "height": "196 cm",
-    "ranking": 17,
-    "points": 3035,
-    "grandSlams": ["—"],
-    "photo": "assets/images/hurkacz.jpg"
-  },
-  {
-    "id": 18,
-    "name": "Ben Shelton",
-    "nationality": "🇺🇸",
-    "height": "193 cm",
-    "ranking": 18,
-    "points": 3000,
-    "grandSlams": ["—"],
-    "photo": "assets/images/shelton.jpg"
-  },
-  {
-    "id": 19,
     "name": "Karen Khachanov",
     "nationality": "🇷🇺",
     "height": "198 cm",
-    "ranking": 19,
-    "points": 2935,
+    "ranking": 16,
+    "points": 2290,
     "grandSlams": ["—"],
     "photo": "assets/images/khachanov.jpg"
   },
   {
+    "id": 17,
+    "name": "Francisco Cerundolo",
+    "nationality": "🇦🇷",
+    "height": "185 cm",
+    "ranking": 17,
+    "points": 2215,
+    "grandSlams": ["—"],
+    "photo": "assets/images/cerundolo.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Tommy Paul",
+    "nationality": "🇺🇸",
+    "height": "185 cm",
+    "ranking": 18,
+    "points": 2175,
+    "grandSlams": ["—"],
+    "photo": "assets/images/paul.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Jack Draper",
+    "nationality": "🇬🇧",
+    "height": "193 cm",
+    "ranking": 19,
+    "points": 2140,
+    "grandSlams": ["—"],
+    "photo": "assets/images/draper.jpg"
+  },
+  {
     "id": 20,
-    "name": "Ugo Humbert",
-    "nationality": "🇫🇷",
+    "name": "Holger Rune",
+    "nationality": "🇩🇰",
     "height": "188 cm",
     "ranking": 20,
-    "points": 2905,
+    "points": 2055,
     "grandSlams": ["—"],
-    "photo": "assets/images/humbert.jpg"
+    "photo": "assets/images/rune.jpg"
   }
 ]
