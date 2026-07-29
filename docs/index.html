@@ -40,6 +40,15 @@
     </footer>
   </div>
 
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox-overlay">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img id="lightboxImage" class="lightbox-image" src="" alt="Player photo" />
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
   <script>
     (function() {
       "use strict";
@@ -48,14 +57,51 @@
       const grid = document.getElementById('waterfallGrid');
       const sortSelect = document.getElementById('sortSelect');
       const genderTabs = document.querySelectorAll('.gender-tab');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
 
       // state
-      let currentGender = 'men'; // default to men
+      let currentGender = 'men';
       let currentSort = 'ranking';
       let playersData = [];
 
       // --------------------------------------------------------------
-      // 1. FETCH JSON from separate files based on gender
+      // 1. LIGHTBOX FUNCTIONS
+      // --------------------------------------------------------------
+      function openLightbox(imageSrc, playerName) {
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = playerName;
+        lightboxCaption.textContent = playerName;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+
+      // Click on overlay to close
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeLightbox();
+        }
+      });
+
+      // Close button
+      lightboxClose.addEventListener('click', closeLightbox);
+
+      // Escape key to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      // --------------------------------------------------------------
+      // 2. FETCH JSON from separate files based on gender
       // --------------------------------------------------------------
       async function loadPlayers(gender) {
         try {
@@ -77,7 +123,7 @@
       }
 
       // --------------------------------------------------------------
-      // 2. FALLBACK data – in case JSON fetch fails
+      // 3. FALLBACK data – in case JSON fetch fails
       // --------------------------------------------------------------
       function getFallbackData(gender) {
         if (gender === 'men') {
@@ -105,32 +151,32 @@
           ];
         } else {
           return [
-            { id: 21, name: "Iga Swiatek", nationality: "🇵🇱", height: "176 cm", ranking: 1, points: 11185, grandSlams: ["2020 FO", "2022 FO", "2023 FO", "2024 FO"], photo: "assets/images/swiatek.jpg" },
-            { id: 22, name: "Aryna Sabalenka", nationality: "🇧🇾", height: "182 cm", ranking: 2, points: 8716, grandSlams: ["2023 AO", "2024 AO"], photo: "assets/images/sabalenka.jpg" },
-            { id: 23, name: "Coco Gauff", nationality: "🇺🇸", height: "175 cm", ranking: 3, points: 7633, grandSlams: ["2023 USO"], photo: "assets/images/gauff.jpg" },
-            { id: 24, name: "Elena Rybakina", nationality: "🇰🇿", height: "184 cm", ranking: 4, points: 6876, grandSlams: ["2022 WB"], photo: "assets/images/rybakina.jpg" },
-            { id: 25, name: "Jasmine Paolini", nationality: "🇮🇹", height: "163 cm", ranking: 5, points: 5353, grandSlams: ["—"], photo: "assets/images/paolini.jpg" },
-            { id: 26, name: "Jessica Pegula", nationality: "🇺🇸", height: "170 cm", ranking: 6, points: 4975, grandSlams: ["—"], photo: "assets/images/pegula.jpg" },
-            { id: 27, name: "Zheng Qinwen", nationality: "🇨🇳", height: "178 cm", ranking: 7, points: 3985, grandSlams: ["2024 AO"], photo: "assets/images/zheng.jpg" },
-            { id: 28, name: "Maria Sakkari", nationality: "🇬🇷", height: "172 cm", ranking: 8, points: 3955, grandSlams: ["—"], photo: "assets/images/sakkari.jpg" },
-            { id: 29, name: "Danielle Collins", nationality: "🇺🇸", height: "178 cm", ranking: 9, points: 3722, grandSlams: ["—"], photo: "assets/images/collins.jpg" },
-            { id: 30, name: "Barbora Krejcikova", nationality: "🇨🇿", height: "178 cm", ranking: 10, points: 3585, grandSlams: ["2021 FO"], photo: "assets/images/krejcikova.jpg" },
-            { id: 31, name: "Emma Navarro", nationality: "🇺🇸", height: "170 cm", ranking: 11, points: 3478, grandSlams: ["—"], photo: "assets/images/navarro.jpg" },
-            { id: 32, name: "Daria Kasatkina", nationality: "🇷🇺", height: "170 cm", ranking: 12, points: 3334, grandSlams: ["—"], photo: "assets/images/kasatkina.jpg" },
-            { id: 33, name: "Anna Kalinskaya", nationality: "🇷🇺", height: "175 cm", ranking: 13, points: 3175, grandSlams: ["—"], photo: "assets/images/kalinskaya.jpg" },
-            { id: 34, name: "Marta Kostyuk", nationality: "🇺🇦", height: "175 cm", ranking: 14, points: 2980, grandSlams: ["—"], photo: "assets/images/kostyuk.jpg" },
-            { id: 35, name: "Liudmila Samsonova", nationality: "🇷🇺", height: "180 cm", ranking: 15, points: 2890, grandSlams: ["—"], photo: "assets/images/samsonova.jpg" },
-            { id: 36, name: "Elina Svitolina", nationality: "🇺🇦", height: "174 cm", ranking: 16, points: 2790, grandSlams: ["—"], photo: "assets/images/svitolina.jpg" },
-            { id: 37, name: "Beatriz Haddad Maia", nationality: "🇧🇷", height: "185 cm", ranking: 17, points: 2720, grandSlams: ["—"], photo: "assets/images/haddadmaia.jpg" },
-            { id: 38, name: "Madison Keys", nationality: "🇺🇸", height: "178 cm", ranking: 18, points: 2680, grandSlams: ["—"], photo: "assets/images/keys.jpg" },
-            { id: 39, name: "Victoria Azarenka", nationality: "🇧🇾", height: "183 cm", ranking: 19, points: 2625, grandSlams: ["2012 AO", "2013 AO"], photo: "assets/images/azarenka.jpg" },
-            { id: 40, name: "Ons Jabeur", nationality: "🇹🇳", height: "167 cm", ranking: 20, points: 2575, grandSlams: ["—"], photo: "assets/images/jabeur.jpg" }
+            { id: 1, name: "Iga Swiatek", nationality: "🇵🇱", height: "176 cm", ranking: 1, points: 11185, grandSlams: ["2020 FO", "2022 FO", "2023 FO", "2024 FO"], photo: "assets/images/swiatek.jpg" },
+            { id: 2, name: "Aryna Sabalenka", nationality: "🇧🇾", height: "182 cm", ranking: 2, points: 8716, grandSlams: ["2023 AO", "2024 AO"], photo: "assets/images/sabalenka.jpg" },
+            { id: 3, name: "Coco Gauff", nationality: "🇺🇸", height: "175 cm", ranking: 3, points: 7633, grandSlams: ["2023 USO"], photo: "assets/images/gauff.jpg" },
+            { id: 4, name: "Elena Rybakina", nationality: "🇰🇿", height: "184 cm", ranking: 4, points: 6876, grandSlams: ["2022 WB"], photo: "assets/images/rybakina.jpg" },
+            { id: 5, name: "Jasmine Paolini", nationality: "🇮🇹", height: "163 cm", ranking: 5, points: 5353, grandSlams: ["—"], photo: "assets/images/paolini.jpg" },
+            { id: 6, name: "Jessica Pegula", nationality: "🇺🇸", height: "170 cm", ranking: 6, points: 4975, grandSlams: ["—"], photo: "assets/images/pegula.jpg" },
+            { id: 7, name: "Zheng Qinwen", nationality: "🇨🇳", height: "178 cm", ranking: 7, points: 3985, grandSlams: ["2024 AO"], photo: "assets/images/zheng.jpg" },
+            { id: 8, name: "Maria Sakkari", nationality: "🇬🇷", height: "172 cm", ranking: 8, points: 3955, grandSlams: ["—"], photo: "assets/images/sakkari.jpg" },
+            { id: 9, name: "Danielle Collins", nationality: "🇺🇸", height: "178 cm", ranking: 9, points: 3722, grandSlams: ["—"], photo: "assets/images/collins.jpg" },
+            { id: 10, name: "Barbora Krejcikova", nationality: "🇨🇿", height: "178 cm", ranking: 10, points: 3585, grandSlams: ["2021 FO"], photo: "assets/images/krejcikova.jpg" },
+            { id: 11, name: "Emma Navarro", nationality: "🇺🇸", height: "170 cm", ranking: 11, points: 3478, grandSlams: ["—"], photo: "assets/images/navarro.jpg" },
+            { id: 12, name: "Daria Kasatkina", nationality: "🇷🇺", height: "170 cm", ranking: 12, points: 3334, grandSlams: ["—"], photo: "assets/images/kasatkina.jpg" },
+            { id: 13, name: "Anna Kalinskaya", nationality: "🇷🇺", height: "175 cm", ranking: 13, points: 3175, grandSlams: ["—"], photo: "assets/images/kalinskaya.jpg" },
+            { id: 14, name: "Marta Kostyuk", nationality: "🇺🇦", height: "175 cm", ranking: 14, points: 2980, grandSlams: ["—"], photo: "assets/images/kostyuk.jpg" },
+            { id: 15, name: "Liudmila Samsonova", nationality: "🇷🇺", height: "180 cm", ranking: 15, points: 2890, grandSlams: ["—"], photo: "assets/images/samsonova.jpg" },
+            { id: 16, name: "Elina Svitolina", nationality: "🇺🇦", height: "174 cm", ranking: 16, points: 2790, grandSlams: ["—"], photo: "assets/images/svitolina.jpg" },
+            { id: 17, name: "Beatriz Haddad Maia", nationality: "🇧🇷", height: "185 cm", ranking: 17, points: 2720, grandSlams: ["—"], photo: "assets/images/haddadmaia.jpg" },
+            { id: 18, name: "Madison Keys", nationality: "🇺🇸", height: "178 cm", ranking: 18, points: 2680, grandSlams: ["—"], photo: "assets/images/keys.jpg" },
+            { id: 19, name: "Victoria Azarenka", nationality: "🇧🇾", height: "183 cm", ranking: 19, points: 2625, grandSlams: ["2012 AO", "2013 AO"], photo: "assets/images/azarenka.jpg" },
+            { id: 20, name: "Ons Jabeur", nationality: "🇹🇳", height: "167 cm", ranking: 20, points: 2575, grandSlams: ["—"], photo: "assets/images/jabeur.jpg" }
           ];
         }
       }
 
       // --------------------------------------------------------------
-      // 3. RENDER function
+      // 4. RENDER function
       // --------------------------------------------------------------
       function render() {
         const sorted = [...playersData].sort((a, b) => {
@@ -166,7 +212,9 @@
           html += `
             <div class="player-card" data-id="${p.id}">
               <div class="card-content">
-                <img class="player-img" src="${imgSrc}" alt="${p.name}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=2e7daf&color=fff&size=130'" />
+                <img class="player-img" src="${imgSrc}" alt="${p.name}" loading="lazy" 
+                     onclick="openLightbox('${imgSrc}', '${p.name}')"
+                     onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=2e7daf&color=fff&size=130'" />
                 <div class="info">
                   <div class="name">
                     ${p.name}
@@ -196,7 +244,7 @@
       }
 
       // --------------------------------------------------------------
-      // 4. EVENT LISTENERS
+      // 5. EVENT LISTENERS
       // --------------------------------------------------------------
       genderTabs.forEach(tab => {
         tab.addEventListener('click', function() {
@@ -213,14 +261,15 @@
       });
 
       // --------------------------------------------------------------
-      // 5. BOOT: load men's data by default
+      // 6. BOOT: load men's data by default
       // --------------------------------------------------------------
       loadPlayers('men');
 
-      // Expose helper for console debugging
-      window.__refresh = () => { loadPlayers(currentGender); };
-      console.log('✅ Tennis Rankings ready. Data loaded from assets/data/');
-      console.log('💡 To force refresh: window.__refresh()');
+      // Make lightbox functions globally accessible for onclick
+      window.openLightbox = openLightbox;
+
+      console.log('✅ Tennis Rankings ready. Click on any player photo to view full size!');
+      console.log('💡 Data loaded from assets/data/');
     })();
   </script>
 </body>
