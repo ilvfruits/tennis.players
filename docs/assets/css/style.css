@@ -85,6 +85,26 @@ h1 small {
   background: #d6dfe8;
 }
 
+/* ---------- TOUR LABEL ---------- */
+.tour-label {
+  display: inline-block;
+  background: #2e7daf;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.tour-label.atp {
+  background: #1b3d5a;
+}
+
+.tour-label.wta {
+  background: #9b2e6b;
+}
+
 /* ---------- SORT DROPDOWN ---------- */
 .filter-sort {
   display: flex;
@@ -230,6 +250,10 @@ h1 small {
   border-radius: 30px;
   font-weight: 600;
   font-size: 0.85rem;
+}
+
+.points-badge.wta-points {
+  background: #9b2e6b;
 }
 
 /* ---------- HISTORY / GRAND SLAM SECTION ---------- */
