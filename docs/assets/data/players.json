@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "Jannik Sinner",
+    "gender": "men",
+    "nationality": "🇮🇹",
+    "height": "188 cm",
+    "ranking": 1,
+    "utr": 16.12,
+    "grandSlams": ["2024 AO"],
+    "photo": "assets/images/sinner.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Carlos Alcaraz",
+    "gender": "men",
+    "nationality": "🇪🇸",
+    "height": "183 cm",
+    "ranking": 2,
+    "utr": 16.08,
+    "grandSlams": ["2022 USO", "2023 WB", "2024 FO"],
+    "photo": "assets/images/alcaraz.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Novak Djokovic",
+    "gender": "men",
+    "nationality": "🇷🇸",
+    "height": "188 cm",
+    "ranking": 3,
+    "utr": 15.97,
+    "grandSlams": ["24× GS"],
+    "photo": "assets/images/djokovic.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Daniil Medvedev",
+    "gender": "men",
+    "nationality": "🇷🇺",
+    "height": "198 cm",
+    "ranking": 4,
+    "utr": 15.82,
+    "grandSlams": ["2021 USO"],
+    "photo": "assets/images/medvedev.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Alexander Zverev",
+    "gender": "men",
+    "nationality": "🇩🇪",
+    "height": "198 cm",
+    "ranking": 5,
+    "utr": 15.76,
+    "grandSlams": ["—"],
+    "photo": "assets/images/zverev.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Andrey Rublev",
+    "gender": "men",
+    "nationality": "🇷🇺",
+    "height": "188 cm",
+    "ranking": 6,
+    "utr": 15.58,
+    "grandSlams": ["—"],
+    "photo": "assets/images/rublev.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Hubert Hurkacz",
+    "gender": "men",
+    "nationality": "🇵🇱",
+    "height": "196 cm",
+    "ranking": 7,
+    "utr": 15.50,
+    "grandSlams": ["—"],
+    "photo": "assets/images/hurkacz.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Casper Ruud",
+    "gender": "men",
+    "nationality": "🇳🇴",
+    "height": "183 cm",
+    "ranking": 8,
+    "utr": 15.42,
+    "grandSlams": ["—"],
+    "photo": "assets/images/ruud.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Holger Rune",
+    "gender": "men",
+    "nationality": "🇩🇰",
+    "height": "188 cm",
+    "ranking": 9,
+    "utr": 15.38,
+    "grandSlams": ["—"],
+    "photo": "assets/images/rune.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Alex de Minaur",
+    "gender": "men",
+    "nationality": "🇦🇺",
+    "height": "183 cm",
+    "ranking": 10,
+    "utr": 15.30,
+    "grandSlams": ["—"],
+    "photo": "assets/images/deminaur.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Iga Swiatek",
+    "gender": "women",
+    "nationality": "🇵🇱",
+    "height": "176 cm",
+    "ranking": 1,
+    "utr": 15.88,
+    "grandSlams": ["2020 FO", "2022 FO", "2023 FO", "2024 FO"],
+    "photo": "assets/images/swiatek.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Aryna Sabalenka",
+    "gender": "women",
+    "nationality": "🇧🇾",
+    "height": "182 cm",
+    "ranking": 2,
+    "utr": 15.72,
+    "grandSlams": ["2023 AO", "2024 AO"],
+    "photo": "assets/images/sabalenka.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Coco Gauff",
+    "gender": "women",
+    "nationality": "🇺🇸",
+    "height": "175 cm",
+    "ranking": 3,
+    "utr": 15.65,
+    "grandSlams": ["2023 USO"],
+    "photo": "assets/images/gauff.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Elena Rybakina",
+    "gender": "women",
+    "nationality": "🇰🇿",
+    "height": "184 cm",
+    "ranking": 4,
+    "utr": 15.60,
+    "grandSlams": ["2022 WB"],
+    "photo": "assets/images/rybakina.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Jessica Pegula",
+    "gender": "women",
+    "nationality": "🇺🇸",
+    "height": "170 cm",
+    "ranking": 5,
+    "utr": 15.48,
+    "grandSlams": ["—"],
+    "photo": "assets/images/pegula.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Maria Sakkari",
+    "gender": "women",
+    "nationality": "🇬🇷",
+    "height": "172 cm",
+    "ranking": 6,
+    "utr": 15.40,
+    "grandSlams": ["—"],
+    "photo": "assets/images/sakkari.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Ons Jabeur",
+    "gender": "women",
+    "nationality": "🇹🇳",
+    "height": "167 cm",
+    "ranking": 7,
+    "utr": 15.32,
+    "grandSlams": ["—"],
+    "photo": "assets/images/jabeur.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Karolina Muchova",
+    "gender": "women",
+    "nationality": "🇨🇿",
+    "height": "180 cm",
+    "ranking": 8,
+    "utr": 15.24,
+    "grandSlams": ["—"],
+    "photo": "assets/images/muchova.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Marketa Vondrousova",
+    "gender": "women",
+    "nationality": "🇨🇿",
+    "height": "172 cm",
+    "ranking": 9,
+    "utr": 15.18,
+    "grandSlams": ["2023 WB"],
+    "photo": "assets/images/vondrousova.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Barbora Krejcikova",
+    "gender": "women",
+    "nationality": "🇨🇿",
+    "height": "178 cm",
+    "ranking": 10,
+    "utr": 15.12,
+    "grandSlams": ["2021 FO"],
+    "photo": "assets/images/krejcikova.jpg"
+  }
+]

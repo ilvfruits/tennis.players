@@ -1,0 +1,326 @@
+/* ============================================================
+   TENNIS WATERFALL · MAIN STYLES
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+  background: #f4f7fc;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* ---------- HEADER ---------- */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a2a3a;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.5rem;
+  border-bottom: 4px solid #2e7daf;
+  padding-bottom: 0.5rem;
+}
+
+h1 small {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #3c5a7a;
+  margin-left: 12px;
+  opacity: 0.8;
+}
+
+.subhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+/* ---------- GENDER TABS ---------- */
+.gender-tabs {
+  display: flex;
+  gap: 8px;
+  background: #e9eef3;
+  padding: 6px;
+  border-radius: 40px;
+}
+
+.gender-tab {
+  padding: 0.5rem 1.8rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gender-tab.active {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 20, 40, 0.08);
+  color: #0a1f2e;
+}
+
+.gender-tab:hover:not(.active) {
+  background: #d6dfe8;
+}
+
+/* ---------- SORT DROPDOWN ---------- */
+.filter-sort {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: white;
+  padding: 0.4rem 1.2rem 0.4rem 1.8rem;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.filter-sort label {
+  font-weight: 500;
+  color: #1f3448;
+  font-size: 0.95rem;
+}
+
+.filter-sort select {
+  border: 1px solid #ccd9e6;
+  border-radius: 30px;
+  padding: 0.4rem 1.2rem 0.4rem 1rem;
+  background: white;
+  font-weight: 500;
+  color: #0e1f2e;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.filter-sort select:focus {
+  border-color: #2e7daf;
+  box-shadow: 0 0 0 3px rgba(46, 125, 175, 0.2);
+}
+
+/* ---------- WATERFALL GRID ---------- */
+.waterfall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 20px;
+}
+
+/* ---------- PLAYER CARD ---------- */
+.player-card {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0, 20, 40, 0.06);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.player-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(0, 30, 60, 0.10);
+}
+
+.card-content {
+  display: flex;
+  padding: 1.2rem 1.2rem 1rem 1.2rem;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* ---------- PLAYER IMAGE ---------- */
+.player-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  object-fit: cover;
+  background: #e1e9f2;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+  border: 1px solid #f0f4fa;
+}
+
+/* ---------- PLAYER INFO ---------- */
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.info .name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0b1d2b;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.info .name .flag {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.info .detail-row {
+  font-size: 0.9rem;
+  color: #1e3a57;
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.info .detail-row span {
+  background: #f0f5fb;
+  padding: 0.1rem 0.6rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1a405b;
+  letter-spacing: 0.2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info .detail-row i {
+  width: 16px;
+  color: #3b6d92;
+}
+
+.stat-badge {
+  display: inline-block;
+  background: #e6eef9;
+  border-radius: 40px;
+  padding: 0.1rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #1b3d5a;
+}
+
+.utr-badge {
+  background: #1b3d5a;
+  color: white;
+  padding: 0.1rem 0.9rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+/* ---------- HISTORY / GRAND SLAM SECTION ---------- */
+.history-section {
+  background: #f8fafd;
+  padding: 0.8rem 1.2rem 1rem 1.2rem;
+  border-top: 1px solid #eef3f8;
+  margin-top: 2px;
+}
+
+.history-section .label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4e6f8a;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.history-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.history-tag {
+  background: #e2ebf3;
+  padding: 0.2rem 0.8rem;
+  border-radius: 40px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #1f405b;
+  letter-spacing: 0.3px;
+}
+
+.history-tag.grand-slam {
+  background: #cbddee;
+  color: #0f334b;
+}
+
+/* ---------- EMPTY STATE ---------- */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #5e7e99;
+  grid-column: 1 / -1;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  color: #5c7a94;
+  border-top: 1px solid #dce5ed;
+  padding-top: 1.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 700px) {
+  .subhead {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-sort {
+    justify-content: space-between;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .waterfall {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .player-img {
+    width: 120px;
+    height: 120px;
+  }
+  .info .detail-row {
+    justify-content: center;
+  }
+  .info .name {
+    justify-content: center;
+  }
+}
