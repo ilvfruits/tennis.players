@@ -473,3 +473,191 @@ footer {
     margin-right: auto;
   }
 }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.main-nav {
+  background: white;
+  border-radius: 16px;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #4a6a85;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.main-nav ul li a:hover {
+  background: #f0f5fb;
+  color: #1a3a5a;
+}
+
+.main-nav ul li a.active {
+  background: #2e7daf;
+  color: white;
+}
+
+.main-nav ul li a i {
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   HISTORY PAGE STYLES
+   ============================================================ */
+.history-tabs {
+  display: flex;
+  gap: 8px;
+  background: #e9eef3;
+  padding: 6px;
+  border-radius: 40px;
+}
+
+.history-tab {
+  padding: 0.5rem 1.8rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.history-tab.active {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 20, 40, 0.08);
+  color: #0a1f2e;
+}
+
+.history-tab:hover:not(.active) {
+  background: #d6dfe8;
+}
+
+/* ---------- HISTORY CARDS ---------- */
+.history-card {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0, 20, 40, 0.06);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.history-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(0, 30, 60, 0.10);
+}
+
+.history-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #e1e9f2;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.history-img:hover {
+  transform: scale(1.02);
+}
+
+.history-info {
+  padding: 1.2rem 1.5rem 1.5rem;
+}
+
+.history-player {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0b1d2b;
+  margin-bottom: 4px;
+}
+
+.history-details {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: #4a6a85;
+  margin-bottom: 8px;
+}
+
+.history-details span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.history-description {
+  font-size: 0.9rem;
+  color: #1e3a57;
+  margin-bottom: 10px;
+}
+
+.era-badge {
+  display: inline-block;
+  padding: 0.2rem 0.9rem;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.era-badge.classic {
+  background: #cbddee;
+  color: #0f334b;
+}
+
+.era-badge.modern {
+  background: #2e7daf;
+  color: white;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .main-nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .main-nav ul li a {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .history-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-img {
+    height: 180px;
+  }
+}
