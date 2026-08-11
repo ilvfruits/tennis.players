@@ -35,6 +35,7 @@
             <option value="ranking">Ranking ▲</option>
             <option value="name">Name</option>
             <option value="points">Points ▲</option>
+            <option value="age">Age ▲</option>
           </select>
         </div>
       </div>
@@ -76,7 +77,23 @@
       let playersData = [];
 
       // --------------------------------------------------------------
-      // 1. LIGHTBOX FUNCTIONS
+      // 1. HELPER: Calculate age from birth year
+      // --------------------------------------------------------------
+      function calculateAge(birthYear) {
+        if (!birthYear) return '—';
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth();
+        // Assume birthday has passed if we're past June (month >= 6)
+        // This is a simplification - for exact age we'd need birth month/day
+        // But we only have birth year in the data
+        let age = currentYear - birthYear;
+        // If current month is before June, subtract 1 (rough approximation)
+        if (currentMonth < 6) age--;
+        return age;
+      }
+
+      // --------------------------------------------------------------
+      // 2. LIGHTBOX FUNCTIONS
       // --------------------------------------------------------------
       function openLightbox(imageSrc, playerName) {
         lightboxImage.src = imageSrc;
@@ -102,7 +119,7 @@
       });
 
       // --------------------------------------------------------------
-      // 2. FETCH JSON
+      // 3. FETCH JSON
       // --------------------------------------------------------------
       async function loadPlayers(gender) {
         try {
@@ -124,30 +141,39 @@
       }
 
       // --------------------------------------------------------------
-      // 3. FALLBACK DATA
+      // 4. FALLBACK DATA
       // --------------------------------------------------------------
       function getFallbackData(gender) {
         if (gender === 'men') {
           return [
-            { id: 1, name: "Jannik Sinner", nationality: "🇮🇹", birthYear: 2001, height: "188 cm", ranking: 1, points: 11330, grandSlams: ["2024 AO", "2024 USO"], photo: "assets/images/sinner.jpg" },
-            { id: 2, name: "Alexander Zverev", nationality: "🇩🇪", birthYear: 1997, height: "198 cm", ranking: 2, points: 8135, grandSlams: ["—"], photo: "assets/images/zverev.jpg" }
+            { id: 1, name: "Jannik Sinner", nationality: "🇮🇹", birthYear: 2001, height: "188 cm", ranking: 1, points: 13450, grandSlams: ["2024 AO", "2024 USO"], photo: "assets/images/sinner.jpg" },
+            { id: 2, name: "Alexander Zverev", nationality: "🇩🇪", birthYear: 1997, height: "198 cm", ranking: 2, points: 8480, grandSlams: ["—"], photo: "assets/images/zverev.jpg" },
+            { id: 3, name: "Carlos Alcaraz", nationality: "🇪🇸", birthYear: 2003, height: "183 cm", ranking: 3, points: 8160, grandSlams: ["2022 USO", "2023 WB", "2024 FO"], photo: "assets/images/alcaraz.jpg" }
           ];
         } else {
           return [
-            { id: 1, name: "Iga Swiatek", nationality: "🇵🇱", birthYear: 2001, height: "176 cm", ranking: 1, points: 11185, grandSlams: ["2020 FO", "2022 FO", "2023 FO", "2024 FO"], photo: "assets/images/swiatek.jpg" },
-            { id: 2, name: "Aryna Sabalenka", nationality: "🇧🇾", birthYear: 1998, height: "182 cm", ranking: 2, points: 8716, grandSlams: ["2023 AO", "2024 AO"], photo: "assets/images/sabalenka.jpg" }
+            { id: 1, name: "Aryna Sabalenka", nationality: "🇧🇾", birthYear: 1998, height: "182 cm", ranking: 1, points: 8550, grandSlams: ["2023 AO", "2024 AO"], photo: "assets/images/sabalenka.jpg" },
+            { id: 2, name: "Elena Rybakina", nationality: "🇰🇿", birthYear: 1999, height: "184 cm", ranking: 2, points: 8056, grandSlams: ["2022 WB"], photo: "assets/images/rybakina.jpg" },
+            { id: 3, name: "Jessica Pegula", nationality: "🇺🇸", birthYear: 1994, height: "170 cm", ranking: 3, points: 6300, grandSlams: ["—"], photo: "assets/images/pegula.jpg" }
           ];
         }
       }
 
       // --------------------------------------------------------------
-      // 4. RENDER FUNCTION - WITH BIRTH YEAR
+      // 5. RENDER FUNCTION - WITH DYNAMIC AGE
       // --------------------------------------------------------------
       function render() {
-        const sorted = [...playersData].sort((a, b) => {
+        // Add age to each player object for sorting
+        const playersWithAge = playersData.map(p => ({
+          ...p,
+          age: calculateAge(p.birthYear)
+        }));
+
+        const sorted = [...playersWithAge].sort((a, b) => {
           if (currentSort === 'name') return a.name.localeCompare(b.name);
           if (currentSort === 'points') return b.points - a.points;
-          return a.ranking - b.ranking;
+          if (currentSort === 'age') return a.age - b.age;
+          return a.ranking - b.ranking; // ranking
         });
 
         if (sorted.length === 0) {
@@ -168,7 +194,7 @@
           const imgSrc = p.photo && p.photo.trim() !== '' ? p.photo : `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=2e7daf&color=fff&size=130`;
 
           const formattedPoints = p.points ? p.points.toLocaleString() : '—';
-          const birthYear = p.birthYear || '—';
+          const ageDisplay = p.age !== '—' ? `${p.age} yrs` : '—';
 
           html += `
             <div class="player-card" data-id="${p.id}">
@@ -185,7 +211,7 @@
                     <span class="${tourClass}">${tourLabel}</span>
                   </div>
                   <div class="detail-row">
-                    <span><i class="fas fa-calendar"></i> ${birthYear}</span>
+                    <span><i class="fas fa-calendar-alt"></i> ${ageDisplay}</span>
                     <span><i class="fas fa-ruler-vertical"></i> ${p.height || '—'}</span>
                     <span><i class="fas fa-medal"></i> #${p.ranking}</span>
                     <span class="${pointsClass}">🏆 ${formattedPoints}</span>
@@ -206,7 +232,7 @@
       }
 
       // --------------------------------------------------------------
-      // 5. EVENT LISTENERS
+      // 6. EVENT LISTENERS
       // --------------------------------------------------------------
       genderTabs.forEach(tab => {
         tab.addEventListener('click', function() {
@@ -223,7 +249,7 @@
       });
 
       // --------------------------------------------------------------
-      // 6. BOOT
+      // 7. BOOT
       // --------------------------------------------------------------
       loadPlayers('men');
       window.openLightbox = openLightbox;
