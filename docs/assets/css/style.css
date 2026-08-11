@@ -661,3 +661,73 @@ footer {
     height: 180px;
   }
 }
+
+/* ============================================================
+   HISTORY PLACEHOLDER STYLES
+   ============================================================ */
+.history-placeholder {
+  display: none;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #2e7daf, #1a4a6e);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 4px 4px 0 0;
+}
+
+.history-placeholder i {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.history-placeholder span {
+  text-align: center;
+}
+
+.history-placeholder .sub-text {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Update history-img to work with placeholder */
+.history-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #e1e9f2;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: 4px 4px 0 0;
+}
+
+.history-img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .history-img,
+  .history-placeholder {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-img,
+  .history-placeholder {
+    height: 180px;
+  }
+  
+  .history-placeholder {
+    font-size: 1.2rem;
+  }
+  
+  .history-placeholder i {
+    font-size: 2.5rem;
+  }
+}
