@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎾 Tennis History · Classic Photos</title>
+  <!-- external CSS: assets/css/style.css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-trophy"></i> Rankings</a></li>
+        <li><a href="history.html" class="active"><i class="fas fa-images"></i> Historical Photos</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>
+        🎾 Tennis History
+        <small>Classic moments & legendary players</small>
+      </h1>
+      <div class="subhead">
+        <div class="history-tabs">
+          <button class="history-tab active" data-era="all">All Eras</button>
+          <button class="history-tab" data-era="classic">Classic (1960s-1990s)</button>
+          <button class="history-tab" data-era="modern">Modern (2000s-2020s)</button>
+        </div>
+        <div class="filter-sort">
+          <label for="sortHistory"><i class="fas fa-arrow-up-wide-short"></i> Sort</label>
+          <select id="sortHistory">
+            <option value="year">Year ▲</option>
+            <option value="player">Player</option>
+            <option value="tournament">Tournament</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- History gallery grid -->
+    <div id="historyGrid" class="waterfall"></div>
+
+    <footer>
+      <i class="fas fa-images"></i> Historical tennis photos · hosted on GitHub
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox-overlay">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img id="lightboxImage" class="lightbox-image" src="" alt="Historical photo" />
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      const grid = document.getElementById('historyGrid');
+      const sortSelect = document.getElementById('sortHistory');
+      const eraTabs = document.querySelectorAll('.history-tab');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      let currentEra = 'all';
+      let currentSort = 'year';
+      let historyData = [];
+
+      // --------------------------------------------------------------
+      // 1. LIGHTBOX FUNCTIONS
+      // --------------------------------------------------------------
+      function openLightbox(imageSrc, caption) {
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = caption;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+      });
+      lightboxClose.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+
+      // --------------------------------------------------------------
+      // 2. HISTORY DATA
+      // --------------------------------------------------------------
+      function getHistoryData() {
+        return [
+          // Classic Era (1960s-1990s)
+          {
+            id: 1,
+            player: "Rod Laver",
+            year: 1969,
+            tournament: "Wimbledon",
+            era: "classic",
+            description: "Rod Laver completes his second Grand Slam",
+            photo: "assets/history/laver_1969.jpg"
+          },
+          {
+            id: 2,
+            player: "Bjorn Borg",
+            year: 1980,
+            tournament: "Wimbledon",
+            era: "classic",
+            description: "Borg vs McEnroe - The greatest final ever",
+            photo: "assets/history/borg_1980.jpg"
+          },
+          {
+            id: 3,
+            player: "John McEnroe",
+            year: 1984,
+            tournament: "Wimbledon",
+            era: "classic",
+            description: "McEnroe dominates with his signature volley",
+            photo: "assets/history/mcenroe_1984.jpg"
+          },
+          {
+            id: 4,
+            player: "Martina Navratilova",
+            year: 1986,
+            tournament: "Wimbledon",
+            era: "classic",
+            description: "Navratilova wins her 9th Wimbledon title",
+            photo: "assets/history/navratilova_1986.jpg"
+          },
+          {
+            id: 5,
+            player: "Steffi Graf",
+            year: 1988,
+            tournament: "Australian Open",
+            era: "classic",
+            description: "Graf completes her historic Golden Slam",
+            photo: "assets/history/graf_1988.jpg"
+          },
+          {
+            id: 6,
+            player: "Pete Sampras",
+            year: 1990,
+            tournament: "US Open",
+            era: "classic",
+            description: "Sampras wins his first Grand Slam at age 19",
+            photo: "assets/history/sampras_1990.jpg"
+          },
+          {
+            id: 7,
+            player: "Monica Seles",
+            year: 1992,
+            tournament: "French Open",
+            era: "classic",
+            description: "Seles wins her 8th Grand Slam",
+            photo: "assets/history/seles_1992.jpg"
+          },
+          {
+            id: 8,
+            player: "Andre Agassi",
+            year: 1999,
+            tournament: "French Open",
+            era: "classic",
+            description: "Agassi completes the Career Grand Slam",
+            photo: "assets/history/agassi_1999.jpg"
+          },
+          // Modern Era (2000s-2020s)
+          {
+            id: 9,
+            player: "Roger Federer",
+            year: 2003,
+            tournament: "Wimbledon",
+            era: "modern",
+            description: "Federer wins his first Grand Slam title",
+            photo: "assets/history/federer_2003.jpg"
+          },
+          {
+            id: 10,
+            player: "Serena Williams",
+            year: 2003,
+            tournament: "Australian Open",
+            era: "modern",
+            description: "Williams wins her first 'Serena Slam'",
+            photo: "assets/history/serena_2003.jpg"
+          },
+          {
+            id: 11,
+            player: "Rafael Nadal",
+            year: 2005,
+            tournament: "French Open",
+            era: "modern",
+            description: "Nadal wins his first French Open at age 19",
+            photo: "assets/history/nadal_2005.jpg"
+          },
+          {
+            id: 12,
+            player: "Novak Djokovic",
+            year: 2008,
+            tournament: "Australian Open",
+            era: "modern",
+            description: "Djokovic wins his first Grand Slam",
+            photo: "assets/history/djokovic_2008.jpg"
+          },
+          {
+            id: 13,
+            player: "Roger Federer",
+            year: 2009,
+            tournament: "French Open",
+            era: "modern",
+            description: "Federer completes the Career Grand Slam",
+            photo: "assets/history/federer_2009.jpg"
+          },
+          {
+            id: 14,
+            player: "Rafael Nadal",
+            year: 2010,
+            tournament: "Wimbledon",
+            era: "modern",
+            description: "Nadal wins his second Wimbledon title",
+            photo: "assets/history/nadal_2010.jpg"
+          },
+          {
+            id: 15,
+            player: "Serena Williams",
+            year: 2012,
+            tournament: "Wimbledon",
+            era: "modern",
+            description: "Williams wins her 5th Wimbledon title",
+            photo: "assets/history/serena_2012.jpg"
+          },
+          {
+            id: 16,
+            player: "Stan Wawrinka",
+            year: 2014,
+            tournament: "Australian Open",
+            era: "modern",
+            description: "Wawrinka wins his first Grand Slam",
+            photo: "assets/history/wawrinka_2014.jpg"
+          },
+          {
+            id: 17,
+            player: "Novak Djokovic",
+            year: 2016,
+            tournament: "French Open",
+            era: "modern",
+            description: "Djokovic completes the Career Grand Slam",
+            photo: "assets/history/djokovic_2016.jpg"
+          },
+          {
+            id: 18,
+            player: "Roger Federer",
+            year: 2017,
+            tournament: "Australian Open",
+            era: "modern",
+            description: "Federer wins his 18th Grand Slam after 5-year drought",
+            photo: "assets/history/federer_2017.jpg"
+          },
+          {
+            id: 19,
+            player: "Ash Barty",
+            year: 2019,
+            tournament: "French Open",
+            era: "modern",
+            description: "Barty wins her first Grand Slam title",
+            photo: "assets/history/barty_2019.jpg"
+          },
+          {
+            id: 20,
+            player: "Carlos Alcaraz",
+            year: 2022,
+            tournament: "US Open",
+            era: "modern",
+            description: "Alcaraz wins his first Grand Slam at age 19",
+            photo: "assets/history/alcaraz_2022.jpg"
+          }
+        ];
+      }
+
+      // --------------------------------------------------------------
+      // 3. RENDER HISTORY
+      // --------------------------------------------------------------
+      function renderHistory() {
+        let filtered = historyData;
+        if (currentEra !== 'all') {
+          filtered = filtered.filter(item => item.era === currentEra);
+        }
+
+        const sorted = [...filtered].sort((a, b) => {
+          if (currentSort === 'player') {
+            return a.player.localeCompare(b.player);
+          } else if (currentSort === 'tournament') {
+            return a.tournament.localeCompare(b.tournament);
+          } else {
+            return b.year - a.year; // newest first
+          }
+        });
+
+        if (sorted.length === 0) {
+          grid.innerHTML = `<div class="empty-state"><i class="fas fa-circle-info"></i> No historical photos found</div>`;
+          return;
+        }
+
+        let html = '';
+        sorted.forEach(item => {
+          const eraLabel = item.era === 'classic' ? 'Classic' : 'Modern';
+          const eraClass = item.era === 'classic' ? 'era-badge classic' : 'era-badge modern';
+          
+          html += `
+            <div class="history-card" data-id="${item.id}">
+              <div class="history-card-content">
+                <img class="history-img" src="${item.photo}" alt="${item.player}" loading="lazy" 
+                     onclick="openLightbox('${item.photo}', '${item.player} - ${item.tournament} (${item.year})')"
+                     onerror="this.src='https://via.placeholder.com/400x300/2e7daf/ffffff?text=${encodeURIComponent(item.player)}'" />
+                <div class="history-info">
+                  <div class="history-player">${item.player}</div>
+                  <div class="history-details">
+                    <span><i class="fas fa-calendar"></i> ${item.year}</span>
+                    <span><i class="fas fa-trophy"></i> ${item.tournament}</span>
+                  </div>
+                  <div class="history-description">${item.description}</div>
+                  <span class="${eraClass}">${eraLabel}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        grid.innerHTML = html;
+      }
+
+      // --------------------------------------------------------------
+      // 4. EVENT LISTENERS
+      // --------------------------------------------------------------
+      eraTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          eraTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          currentEra = this.dataset.era;
+          renderHistory();
+        });
+      });
+
+      sortSelect.addEventListener('change', function() {
+        currentSort = this.value;
+        renderHistory();
+      });
+
+      // --------------------------------------------------------------
+      // 5. BOOT
+      // --------------------------------------------------------------
+      historyData = getHistoryData();
+      renderHistory();
+
+      window.openLightbox = openLightbox;
+      console.log('✅ Tennis History ready!');
+    })();
+  </script>
+</body>
+</html>
