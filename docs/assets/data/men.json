@@ -7,7 +7,7 @@
     "height": "188 cm",
     "ranking": 1,
     "points": 13450,
-    "grandSlams": ["2024 AO", "2024 USO"],
+    "grandSlams": ["2024 AO", "2024 USO", "2025 WB", "2026 WB"],
     "photo": "assets/images/sinner.jpg"
   },
   {
@@ -18,7 +18,7 @@
     "height": "198 cm",
     "ranking": 2,
     "points": 8480,
-    "grandSlams": ["—"],
+    "grandSlams": ["2026 FO"],
     "photo": "assets/images/zverev.jpg"
   },
   {
@@ -29,7 +29,7 @@
     "height": "183 cm",
     "ranking": 3,
     "points": 8160,
-    "grandSlams": ["2022 USO", "2023 WB", "2024 FO"],
+    "grandSlams": ["2022 USO", "2023 WB", "2024 FO", "2025 USO", "2026 AO"],
     "photo": "assets/images/alcaraz.jpg"
   },
   {
